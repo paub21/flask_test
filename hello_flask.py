@@ -1,12 +1,14 @@
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request, render_template
 app = Flask(__name__)
  
+@app.route('/')
+def home():
+   return render_template('home.html')
  
 @app.route('/success/<name>')
 def success(name):
     return 'welcome %s, hope you enjoy your stay' % name
- 
- 
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
